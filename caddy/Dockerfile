@@ -1,3 +1,3 @@
-FROM abiosoft/caddy:1.0.3-no-stats
+FROM caddy:2
 
-COPY Caddyfile /etc/Caddyfile
+COPY Caddyfile /etc/caddy/Caddyfile
