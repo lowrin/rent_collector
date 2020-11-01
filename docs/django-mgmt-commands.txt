@@ -1,0 +1,8 @@
+
+
+
+
+
+pipenv run python .\src_django\manage.py add_symbols dax_index delete_all
+
+pipenv run python .\src_django\manage.py add_prices delete_all

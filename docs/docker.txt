@@ -1,0 +1,20 @@
+https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/#.XMmUvDHChTA.reddit
+
+
+docker-compose.exe up --build
+
+
+
+portainer
+
+
+docker save a > stocks.tar
+
+
+docker load < stocks.tar
+
+
+
+
+docker exec -it stocks_django_1 bash
+

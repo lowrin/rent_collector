@@ -1,0 +1,3 @@
+install local dev env
+
+pipenv install --skip-lock --system --dev

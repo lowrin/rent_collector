@@ -1,0 +1,8 @@
+visualportfolio.net, www.visualportfolio.net
+{
+  root /data/caddy_django_static
+  proxy / django:8000 {
+        transparent
+        except /static
+  }
+}

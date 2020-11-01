@@ -1,0 +1,39 @@
+version: '3.0'
+
+services:
+  django:
+    build: .
+    depends_on:
+    - postgres
+    restart: unless-stopped
+    command: sh gunicorn.sh
+    volumes:
+    - /dockerdata/caddy_django_static:/data/caddy_django_static
+    env_file: env.prod
+  postgres:
+    image: postgres:11
+    restart: unless-stopped
+    volumes:
+    - /dockerdata/postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: djangodb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+  caddy:
+    build: caddy/.
+    depends_on:
+    - django
+    volumes:
+    - /dockerdata/caddy_django_static:/data/caddy_django_static
+    - /dockerdata/.caddy:/root/.caddy
+    ports:
+    - 443:443
+    - 80:80
+  cron:
+    build:
+      context: ./
+      dockerfile: ./cron/Dockerfile
+    depends_on:
+    - postgres
+    restart: unless-stopped
+    env_file: env.prod

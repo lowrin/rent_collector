@@ -1,0 +1,5 @@
+
+
+
+
+manage.py shell --command="from stocks.models.stock_price import StockPrice; StockPrice.objects.all().delete()"

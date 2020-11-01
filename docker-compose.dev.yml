@@ -1,0 +1,44 @@
+version: '3.0'
+
+services:
+  django:
+    build: .
+    depends_on:
+    - postgres
+    restart: unless-stopped
+    command: sh rundevserver.sh
+    volumes:
+    - /dockerdata/caddy_django_static:/data/caddy_django_static
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=foooooooo123oooooooo
+      - DATABASE=POSTGRES
+  postgres:
+    image: postgres:13
+    restart: unless-stopped
+    volumes:
+    - /dockerdata/postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: djangodb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+  caddy:
+    build: caddy/.
+    depends_on:
+    - django
+    volumes:
+    - /dockerdata/caddy_django_static:/data/caddy_django_static
+    ports:
+    - 443:443
+    - 80:80
+  cron:
+    build:
+      context: ./
+      dockerfile: ./cron/Dockerfile
+    depends_on:
+    - postgres
+    restart: unless-stopped
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=foooooooo123oooooooo
+      - DATABASE=POSTGRES

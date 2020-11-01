@@ -1,0 +1,6 @@
+https://django-cron.readthedocs.io/en/latest/
+
+https://github.com/kraiz/django-crontab
+
+
+https://stackoverflow.com/questions/10101573/how-to-run-django-cron-job-in-exact-time

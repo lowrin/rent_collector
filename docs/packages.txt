@@ -1,0 +1,8 @@
+https://github.com/highcharts/highcharts
+
+ideas:
+https://www.vobcocharts.com/demos/getting-started
+https://www.amcharts.com/demos/ohlc-chart/
+https://www.anychart.com/products/anystock/gallery/Stock_Technical_Indicators/Accumulation_Distribution_Line_(ADL).php
+https://www.highcharts.com/blog/products/highstock/
+
