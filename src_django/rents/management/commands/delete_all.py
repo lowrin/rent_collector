@@ -1,10 +1,9 @@
 from django.core.management.base import BaseCommand
-
+from stocks.models.fundamental import Fundamental
 from stocks.models.index import Index
 from stocks.models.index_component import IndexComponent
 from stocks.models.price import Price
 from stocks.models.stock import Stock
-from stocks.models.fundamental import Fundamental
 
 
 class Command(BaseCommand):

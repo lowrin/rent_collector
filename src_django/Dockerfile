@@ -4,7 +4,7 @@
 #maybe later
 
 # pull official base image
-FROM python:3.9-slim
+FROM python:3.7-slim
 
 # set work directory
 WORKDIR /usr/src/app
@@ -33,4 +33,4 @@ RUN chmod +x rundevserver.sh && sed -i 's/\r//' rundevserver.sh
 #USER appuser
 
 # copy project
-COPY src_django /usr/src/app/
+COPY . /usr/src/app/
