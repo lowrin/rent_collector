@@ -33,4 +33,4 @@ RUN chmod +x rundevserver.sh && sed -i 's/\r//' rundevserver.sh
 #USER appuser
 
 # copy project
-COPY django_main /usr/src/app/
+COPY . /usr/src/app/

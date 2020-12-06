@@ -5,7 +5,7 @@ description = ""
 authors = ["Jonas Pfeifer"]
 
 [tool.poetry.dependencies]
-python = "3.7.*"
+python = "3.9.*"
 django = "^3.1.2"
 pandas = "^1.1.4"
 djangorestframework = "^3.12.1"
@@ -22,16 +22,15 @@ pycodestyle = "^2.6.0"
 black = "^20.8b1"
 isort = "^5.6.4"
 taskipy = "^1.4.0"
-python-dotenv = "^0.15.0"
-
+python-dotenv = {extras = ["cli"], version = "^0.15.0"}
 
 
 [tool.taskipy.tasks]
-serve = "python .\\src_django\\manage.py runserver"
+serve = "python manage.py runserver"
 format = "task isort && task black"
 black = "black ."
-isort = "isort --recursive --check-only ."
-pycodestlye = ""
+isort = "isort --force-single-line-imports --ignore-whitespace --profile black ."
+pycodestyle = "pycodestyle --ignore=E501,W503,E266,E722,E203 --show-source ."
 
 [tool.taskipy.settings]
 runner = "dotenv run"
