@@ -29,8 +29,8 @@ RUN chmod +x gunicorn.sh && sed -i 's/\r//' gunicorn.sh
 COPY ./rundevserver.sh /usr/src/app/rundevserver.sh
 RUN chmod +x rundevserver.sh && sed -i 's/\r//' rundevserver.sh
 
-#RUN useradd --create-home appuser
-#USER appuser
+RUN useradd --create-home appuser
+USER appuser
 
 # copy project
 COPY . /usr/src/app/

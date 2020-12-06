@@ -2,25 +2,29 @@ version: '3.0'
 
 services:
   django:
-    build: .
+    build: src_django\
     depends_on:
     - postgres
+    - redis
     restart: unless-stopped
     command: sh gunicorn.sh
-#    volumes:
-#    - /dockerdata/caddy_django_static:/data/caddy_django_static
-    env_file: env.dev
+    volumes:
+    - ./dockerdata/caddy_django_static:/data/caddy_django_static
+    env_file: src_django\.env
   postgres:
     image: postgres:12
     restart: unless-stopped
-#    volumes:
-#    - /dockerdata/postgres_data:/var/lib/postgresql/data
-    env_file: env.dev
+    volumes:
+    - ./dockerdata/postgres_data:/var/lib/postgresql/data
+    env_file: src_django\.env
   caddy:
     build: caddy/.
     depends_on:
     - django
-#    volumes:
-#    - /dockerdata/caddy_django_static:/data/caddy_django_static
+    volumes:
+    - ./dockerdata/caddy_django_static:/data/caddy_django_static
     ports:
     - 8080:8080
+  redis:
+    image: redis
+    restart: unless-stopped

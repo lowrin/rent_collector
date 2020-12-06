@@ -16,7 +16,5 @@
 }
 
 :8080 {
-    root * /data/caddy_django_static
     reverse_proxy django:8000
-    respond "Hello, world!"
 }

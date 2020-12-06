@@ -19,7 +19,8 @@
 
 - `docker-compose down`
 
-
+## run in wsl 2
+- `/mnt/c/Users/jonas/git/rent_collector`
 
 
 ## reset
